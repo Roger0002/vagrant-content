@@ -1,0 +1,9 @@
+Para fazer o sincronismo básico via Vagrantfile, devemos usar a diretiva config.vm.synced_folder. Segue um exemplo:
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.synced_folder "app/", "/var/www/app", create: true, group: "vagrant", owner: "vagrant", id: "app"
+end
+
+O diretório sincronizado é um compartilhamento montado lá na VM. Daria pra controlar as opções de montagem com a opção mount_options, assim:
+mount_options: ["key1=value", "key2=value", "key3=value"]
